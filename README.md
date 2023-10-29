@@ -34,23 +34,23 @@ Hosted url : https://weekly-habit-tracking-app-production.up.railway.app
 
 
 ## Getting Started
-Clone the Repository: Clone this repository to your local machine using the following command:
+- Clone the Repository: Clone this repository to your local machine using the following command:
 
-git clone https://github.com/gauravmittal54/habit-tracker-app.git
-Install Dependencies: Navigate to the project directory and install the required dependencies using npm:
+<pre>git clone https://github.com/gauravmittal54/habit-tracker-app.git</pre>
+- Install Dependencies: Navigate to the project directory and install the required dependencies using npm:
 
-npm install
-Set Up MongoDB: Ensure you have MongoDB installed and running on your local machine. You may need to configure the database connection in the db_connection.js file.
+<pre>npm install</pre>
+- Set Up MongoDB: Ensure you have MongoDB installed and running on your local machine. You may need to configure the database connection in the db_connection.js file.
 
-Add these keys in .env file : <pre>SECRET_KEY="<YOUR-SECREST-JWT-KEY>"
+- Add these keys in .env file : <pre>SECRET_KEY="<YOUR-SECRET-JWT-KEY>"
                               MONGO_URL = "<YOUR-MONGODB-URL>"
                               APP_KEY = "<NODEMAILER-APP-KEY>"
                               APP_ID - "<NODEMAILER-APP-ID>"</pre>
 
-Start the Application: Launch the Habit Tracker application by running:
+- Start the Application: Launch the Habit Tracker application by running:
 
-npm start
-Access the Application: Open your web browser and access the application at http://localhost:8000.
+<pre>npm start</pre>
+- Access the Application: Open your web browser and access the application at http://localhost:8000.
 
 ## Usage
 1. Adding Habits: Click the "Add Habit" button and enter the habit name. Press "Enter" or click "Add" to create a new habit.
