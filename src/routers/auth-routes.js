@@ -46,7 +46,7 @@ router.post("/registration", async (req, res) => {
                 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
                 return passwordRegex.test(password);
             })())) {
-                const errorMessage = process.env.INVALID_PASSWORD_MESSAGE;
+                const errorMessage = "Password must be at least 8 characters long and contain at least one letter and one digit.";
                 return res.render("registration", { errorMessage });
             }
 
@@ -62,7 +62,7 @@ router.post("/registration", async (req, res) => {
             });
 
             if (!mobileRegex.test(req.body.phone)) {
-                const errorMessage = process.env.INVALID_MOBILE_MESSAGE;
+                const errorMessage = "Invalid mobile number. Please enter a valid Indian mobile number.";
                 return router.post("/registration", async (req, res) => {
                     try {
                         const password = req.body.password;
@@ -74,7 +74,7 @@ router.post("/registration", async (req, res) => {
                                 const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/;
                                 return passwordRegex.test(password);
                             })())) {
-                                const errorMessage = process.env.INVALID_PASSWORD_MESSAGE;
+                                const errorMessage = "Password must be at least 8 characters long and contain at least one letter and one digit.";
                                 return res.render("registration", { errorMessage });
                             }
                 
@@ -90,7 +90,7 @@ router.post("/registration", async (req, res) => {
                             });
                 
                             if (!mobileRegex.test(req.body.phone)) {
-                                const errorMessage = process.env.INVALID_MOBILE_MESSAGE;
+                                const errorMessage = "Invalid mobile number. Please enter a valid Indian mobile number.";
                                 return res.render("registration", { errorMessage });
                             }
                 
@@ -146,7 +146,7 @@ router.post("/login", async (req, res) => {
         const user = await register.findOne({ email: email });
 
         if (!user) {
-            const errorMessage = process.env.INVALID_CREDENTIALS_MESSAGE;
+            const errorMessage = "Invalid email or password";
             return res.render("login", { email, errorMessage });
         }
 
@@ -160,7 +160,7 @@ router.post("/login", async (req, res) => {
             app.locals.jwt = token;
             res.render("secretPage", { jwt });
         } else {
-            const errorMessage = process.env.INVALID_CREDENTIALS_MESSAGE;
+            const errorMessage = "Invalid email or password";
             return res.render("login", { email, errorMessage });
         }
     } catch (error) {
@@ -197,7 +197,7 @@ router.post("/forgotPassword",async(req,res)=>{
     const user = await register.findOne({ email: email, phone: phone });
     
     if (!user) {
-        const errorMessage = process.env.INVALID_CREDENTIALS_MESSAGE_FORGOTPASS;
+        const errorMessage = "Invalid email or phone";
         return res.render("forgotPassword", { errorMessage });
     }
 
@@ -226,10 +226,10 @@ router.post("/forgotPassword",async(req,res)=>{
 
         await mailTransporter.sendMail(details);
     } catch (error) {
-        const errorMessage = process.env.EMAIL_FAILURE_MESSAGE;
+        const errorMessage = "Failed to send the email.";
         return res.render("forgotPassword", { errorMessage });
     }
-    const errorMessage = process.env.EMAIL_SUCCESS_MESSAGE;
+    const errorMessage = "New password has been sent to your email";
     res.render("forgotPassword",{ errorMessage });
     
     } catch (error) {
@@ -252,14 +252,14 @@ router.post("/resetPassword", async (req, res) => {
         const confirmPassword = req.body.confirmPassword;
 
         if (password !== confirmPassword) {
-            const errorMessage = process.env.PASS_MATCHING_ERROR;
+            const errorMessage = "Passwords don't match";
             return res.render("resetPassword", { errorMessage });
         }
 
         const user = await register.findOne({ email: email });
 
         if (!user) {
-            const errorMessage = process.env.INVALID_EMAIL;
+            const errorMessage = "Invalid email";
             return res.render("resetPassword", { errorMessage });
         }
 
@@ -268,7 +268,7 @@ router.post("/resetPassword", async (req, res) => {
         console.log(req.cookies.jwt);
         await user.save();
 
-        const errorMessage = process.env.PASS_RESET_SUCCESS;
+        const errorMessage = "Password reset done";
 
         res.render("resetPassword", { errorMessage });
     } catch (error) {
