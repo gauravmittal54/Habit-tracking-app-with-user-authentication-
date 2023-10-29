@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticate</title>
+    <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="css/auth-styles/style.css">
+</head>
+
+<body>
+    {{>navbar}}
+    <div id="content">
+        {{#if message}}
+        <h1>{{message}}</h1>
+        {{else}}
+        <div>
+            <h1>Welcome!!!</h1>
+        </div>
+        <div>
+            <h2 id="text">{{randomQuote}}</h2>
+        </div>
+        {{/if}}
+    </div>
+    {{>footer}}
+    <script>
+        const quotes = [
+    "The secret of change is to focus all your energy, not on fighting the old, but on building the new. - Socrates",
+    "Motivation is what gets you started. Habit is what keeps you going. - Jim Rohn",
+    "You will never change your life until you change something you do daily. - John C.Maxwell",
+    "The only way to do great work is to love what you do. - Steve Jobs",
+    "Your habits are either the best of servants or the worst of masters. - Nathaniel Emmons",
+    "Success is the sum of small efforts repeated day in and day out. - Robert Collier",
+    "The journey of a thousand miles begins with one step. - Lao Tzu",
+    "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+    "A year from now you may wish you had started today. - Karen Lamb",
+    "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
+    "You're never a loser until you quit trying. - Mike Ditka",
+    "Your future is created by what you do today, not tomorrow. - Robert Kiyosaki",
+    "Believe you can, and you're halfway there. - Theodore Roosevelt",
+    "Success is walking from failure to failure with no loss of enthusiasm. - Winston S. Churchill"
+];
+
+// Randomly select a quote from the array
+const randomIndex = Math.floor(Math.random() * quotes.length);
+const randomQuote = quotes[randomIndex];
+
+// Set the random quote in the template
+document.getElementById("text").textContent = randomQuote;
+
+    </script>
+</body>
+
+</html>
