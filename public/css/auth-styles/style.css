@@ -72,3 +72,8 @@ iframe:hover {
     transform: scale(1.03) ; /* Add scale transform on hover */
 }
 
+#video-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
