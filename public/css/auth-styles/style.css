@@ -1,4 +1,8 @@
 /* Set body and html to 100% height */
+*{
+    margin: 0;
+    padding: 0;
+}
 html, body {
     height: 100%;
     margin: 0; /* Remove default margin */
@@ -11,7 +15,7 @@ body {
 
 
 
-h1 {
+h1 , h3 {
     text-align: center;
     font-size: 36px; /* Increase the font size for the title */
     margin-top: 10px;
@@ -52,3 +56,19 @@ div > h1 {
     font-size: 48px; /* Larger font size for the welcome message */
     color: #d6dad9; /* Teal color for welcome message */
 }
+
+iframe {
+    max-width: 100%;
+    height: auto;
+    width: 640px;
+    height: 360px;
+    border: 4px;
+    border-radius: 15px; /* Add border-radius for rounded corners */
+    transition: border-radius 0.5s, transform 0.5s; /* Add transitions for border-radius and transform */
+}
+
+iframe:hover {
+    border-radius: 0; /* Change border-radius on hover */
+    transform: scale(1.03) ; /* Add scale transform on hover */
+}
+
