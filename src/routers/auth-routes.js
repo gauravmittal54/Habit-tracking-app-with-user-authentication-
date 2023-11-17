@@ -40,6 +40,8 @@ router.post("/registration", async (req, res) => {
         const password = req.body.password;
         const confirmpassword = req.body.confirmpassword;
         const mobileRegex = /^[6-9]\d{9}$/;
+         const email = req.body.email;
+        let successMessage = "Registration successful. Please login.";
 
         if (password === confirmpassword) {
             if (!((() => {
@@ -102,7 +104,7 @@ router.post("/registration", async (req, res) => {
                             });
                 
                             const temp = await registerEmp.save();
-                            res.status(201).render("index");
+                            return res.status(201).render("login", { email, successMessage });
                         }
                     } catch (error) {
                         res.status(400).send(error);
@@ -118,7 +120,7 @@ router.post("/registration", async (req, res) => {
             });
 
             const temp = await registerEmp.save();
-            res.status(201).render("index");
+            return res.status(201).render("login", { email, successMessage });
         }
     } catch (error) {
         if (error.code === 11000) {
