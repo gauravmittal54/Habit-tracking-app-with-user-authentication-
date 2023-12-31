@@ -1,6 +1,5 @@
 # Habit-tracker-app
-Hosted url : https://weekly-habit-tracking-app-production.up.railway.app
-
+Hosted url : [Link](https://habit-tracker-production-ee5e.up.railway.app/)
 ## Table of Contents
    - [UI Screenshots](#ui-screenshots)
    - [Features](#features)
